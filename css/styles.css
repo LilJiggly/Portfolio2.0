@@ -195,7 +195,7 @@ main {
   background-color: red;
 }
 
-#popup1-image {
+#popup1-image, #popup2-image {
   background-image: url(/images/bg.jpg);
   background-size: cover;
   width: 100%;
