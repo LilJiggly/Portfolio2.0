@@ -1,0 +1,384 @@
+:root {
+  --Cream: #d9d9d9;
+  --Black2: #131313;
+  --Black1: #252525;
+}
+
+
+* {
+  padding: 0em; 
+  margin: 0em;
+  box-sizing: border-box;
+  font-family: sofia pro;
+  color: var(--Cream);
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+ 
+  background-image: url(/images/bg.jpg);
+  background-position: center center;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+}
+
+
+/*-------------------- HEADER --------------------*/
+
+header {
+  padding: .5em 1em;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(32px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99999;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1em; /* Adds spacing between icons and clock */
+}
+
+.header-right i {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#clock-container {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+
+
+
+.header-tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.header-tooltip {
+  visibility: hidden;
+  width: auto;
+
+  text-align: center;
+
+  position: absolute;
+  z-index: 1;
+  top: 100%; /* Position the tooltip below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 1em; /* Adds 1em space between the icon and the tooltip */
+ 
+  transition: opacity 0.3s;
+
+  padding: .5em 1em;
+
+  color: var(--Cream);
+
+  border-radius: .5em;
+
+  text-wrap: nowrap;
+
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(32px);
+}
+
+.header-tooltip-container:hover .header-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+/*-------------------- MAIN --------------------*/
+
+main {
+  /* height: calc(90vh - 2em); */
+  height: 100%;
+  width: 100%;
+}
+
+.popup-container {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  /* left: 50%;
+  top: 50%; */
+  /* transform: translate(-50%, -50%); */
+  width: 668px;
+  height: 500px;
+  
+}
+
+.popup-content {
+  background-color: var(--Black2);
+  padding: 1em;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  min-height: 92px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.popup-header {
+  cursor: move;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  background-color: var(--Black1);
+
+  border-radius: .5em;
+}
+
+.popup-main {
+  background-color: var(--Black1);
+  height: 100%;
+  overflow: scroll;
+  padding: 1.5em;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  border-radius: .5em;
+}
+
+
+
+.close {
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.maximize {
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+  margin-right: 10px;
+  transition: color 0.3s ease;
+}
+
+.maximize:hover {
+  color: #000;
+}
+
+
+.popup1-image-container {
+  width: 100%;
+  height: 200px;
+  background-color: red;
+}
+
+#popup1-image {
+  background-image: url(/images/bg.jpg);
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+
+
+.resize-handle {
+  position: absolute;
+  background: transparent;
+  z-index: 1001;
+  width: 15px;
+  height: 15px;
+
+  /* For debugging V */
+  /* outline: 1px solid red;  */
+  
+
+}
+
+.resize-handle.top-left {
+  top: -7.5px;
+  left: -7.5px;
+  cursor: nwse-resize;
+}
+
+.resize-handle.top-right {
+  top: -7.5px;
+  right: -7.5px;
+  cursor: nesw-resize;
+}
+
+.resize-handle.bottom-left {
+  bottom: -7.5px;
+  left: -7.5px;
+  cursor: nesw-resize;
+}
+
+.resize-handle.bottom-right {
+  bottom: -7.5px;
+  right: -7.5px;
+  cursor: nwse-resize;
+}
+
+.resize-handle.top,
+.resize-handle.bottom {
+  left: 50%;
+  width: calc(100% - 15px); /* Reduced width to avoid overlapping corner handles */
+  height: 10px;
+  transform: translateX(-50%);
+}
+
+.resize-handle.top {
+  top: -5px;
+  cursor: ns-resize;
+}
+
+.resize-handle.bottom {
+  bottom: -5px;
+  cursor: ns-resize;
+}
+
+.resize-handle.left,
+.resize-handle.right {
+  top: 50%;
+  height: calc(100% - 15px); /* Reduced height to avoid overlapping corner handles */
+  width: 10px;
+  transform: translateY(-50%);
+}
+
+.resize-handle.left {
+  left: -5px;
+  cursor: ew-resize;
+}
+
+.resize-handle.right {
+  right: -5px;
+  cursor: ew-resize;
+}
+
+
+
+
+
+
+/*-------------------- FOOTER --------------------*/
+
+footer {
+  height: auto;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  margin: 1em auto;
+  z-index: 999999;
+}
+
+#dock {
+  width: auto;
+  height: auto;
+
+  padding: 1em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(32px);
+
+  border-radius: .5em;
+}
+
+#dock {
+  position: fixed;
+  bottom: 1em;
+  transition: transform 0.5s ease-in-out;
+  transform: translateY(0);
+}
+
+#dock.hidden {
+  transform: translateY(150%);
+}
+
+
+.dock-icons {
+  width: 3em;
+  height: 3em;
+  background-color: red;
+
+  border-radius: .25em;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, .5);
+
+  transition: .3s;
+}
+
+.dock-icons:hover {
+  cursor: pointer;
+  /* margin-bottom: 0.5em; */
+}
+
+.dock-icons:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip {
+  position: relative;
+  bottom: 125%;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: auto;
+
+  padding: .5em 1em;
+
+  color: var(--Cream);
+
+  border-radius: .5em;
+
+  text-wrap: nowrap;
+
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(32px);
+
+  position: absolute;
+  left: 50%; /* Position the tooltip's left edge at the center of the .tooltip */
+  transform: translateX(-50%); /* Center the tooltip horizontally */
+
+  z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
