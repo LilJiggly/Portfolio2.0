@@ -5,7 +5,7 @@ const popupsData = [
     h2: "NieR: Automata promotie website",
     h3: "Sub line",
     content: "Tijdens de Minor Visual Interface Design kreeg ik de opdracht om alles wat ik geleerd had nog één laatste keer toe te passen tijdens de 'Meesterproef'. Mijn focus lag hierbij op het ontwikkelen van een website die de essentie van NieR: Automata - een intrigerende videogame - weerspiegelt. Mijn benadering was gericht op het implementeren van game design principes om de website een speelse en interactieve dimensie te geven die nauw aansluit bij het thema van de game.",
-    imageUrl: "../images/bg.jpg" // Add your image path here
+    imageUrl: "./images/bg.jpg" // Add your image path here
   },
   {
     id: "popup2",
@@ -13,7 +13,7 @@ const popupsData = [
     h2: "Another Project Title",
     h3: "Another Sub line",
     content: "This is the content for popup 2.",
-    imageUrl: "../images/bg.jpg" // Add your image path here
+    imageUrl: "./images/bg.jpg" // Add your image path here
   }
 ];
 
