@@ -110,6 +110,11 @@ main {
   /* height: calc(90vh - 2em); */
   height: 100%;
   width: 100%;
+
+}
+
+#popup0 {
+  display: block;
 }
 
 .popup-container {
@@ -163,6 +168,39 @@ main {
   border-radius: .5em;
 }
 
+.popup0-main {
+  background-color: var(--Black1);
+  height: 100%;
+  overflow: scroll;
+  padding: 1.5em;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  border-radius: .5em;
+}
+
+#popup0-image {
+  background-image: url(/images/bg.jpg);
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  border-radius: .5em;
+  max-height: 200px;
+}
+
+#popup0-text-container, 
+#popup0-image-container {
+  flex: 1; /* This will make both containers take up equal space */
+}
+
+.popup0-intro-container {
+  display: flex;
+  gap: 1em;
+}
 
 
 .close {
@@ -197,7 +235,6 @@ main {
   aspect-ratio: 16/9;
   border-radius: .5em;
 }
-
 
 
 .resize-handle {
@@ -365,10 +402,17 @@ footer {
   z-index: 1;
 }
 
+#icon0 {
+  background-color: grey;
+}
 
+#icon1 {
+  background-color: green;
+}
 
-
-
+#icon2 {
+  background-color: blue;
+}
 
 
 

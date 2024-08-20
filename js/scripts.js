@@ -1,5 +1,13 @@
 const popupsData = [
   {
+    id: "popup0",
+    title: "Welcome",
+    h2: "About me",
+    h3: "Sub line",
+    content: "Wat rotzooi over mezelf",
+    imageUrl: "./images/pf.jpg" // Add your image path here
+  },
+  {
     id: "popup1",
     title: "NieR: Automata promotie website",
     h2: "NieR: Automata promotie website",
@@ -53,12 +61,21 @@ function getMaxZIndex() {
   return maxZ;
 }
 
+// Show popup0 as soon as the page loads
+window.addEventListener('DOMContentLoaded', function () {
+  openPopup(0, '64px', '128px');
+});
+
+document.getElementById('icon0').addEventListener('click', function () {
+  openPopup(0, '64px', '128px');
+});
+
 document.getElementById('icon1').addEventListener('click', function () {
-  openPopup(0, '24px', '64px');
+  openPopup(1, '24px', '64px');
 });
 
 document.getElementById('icon2').addEventListener('click', function () {
-  openPopup(1, '200px', '150px');
+  openPopup(2, '200px', '150px');
 });
 
 document.querySelectorAll('.close').forEach(closeButton => {
@@ -66,11 +83,6 @@ document.querySelectorAll('.close').forEach(closeButton => {
     hidePopup(this.getAttribute('data-popup-id'));
   });
 });
-
-
-
-
-
 
 function makeResizableAndDraggable(popupContainer) {
   const resizers = popupContainer.querySelectorAll('.resize-handle');
@@ -166,6 +178,7 @@ function makeResizableAndDraggable(popupContainer) {
 }
 
 document.querySelectorAll('.popup-container').forEach(makeResizableAndDraggable);
+
 
 
 
