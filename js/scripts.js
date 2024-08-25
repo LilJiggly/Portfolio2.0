@@ -211,3 +211,108 @@ updateClock();
 
 // Update the clock every second
 setInterval(updateClock, 1000);
+
+
+
+
+
+
+/* background change */
+
+document.getElementById('header-icon3').addEventListener('click', function () {
+  const popup = document.getElementById('background-popup');
+  popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+});
+
+document.querySelectorAll('.bg-option').forEach(img => {
+  img.addEventListener('click', function () {
+    const bgUrl = img.getAttribute('data-bg');
+    document.body.style.backgroundImage = `url(${bgUrl})`;
+    document.getElementById('background-popup').style.display = 'none'; // Hide the popup after selection
+  });
+});
+
+// Close the popup if clicked outside
+document.addEventListener('click', function (e) {
+  const popup = document.getElementById('background-popup');
+  const icon = document.getElementById('header-icon3');
+
+  if (!popup.contains(e.target) && !icon.contains(e.target)) {
+    popup.style.display = 'none';
+  }
+});
+
+
+/* toggle dark / light mode */
+
+document.getElementById('theme-toggle-icon').addEventListener('click', function () {
+  const body = document.body;
+  body.classList.toggle('light-mode');
+
+  // Toggle the icon between moon and sun
+  this.textContent = body.classList.contains('light-mode') ? '🌞' : '🌙';
+});
+
+
+
+/* setting icons */
+
+document.getElementById('header-icon2').addEventListener('click', function (e) {
+  e.stopPropagation(); // Prevents the click from propagating to the document
+  const dropdown = document.getElementById('settings-dropdown');
+  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+});
+
+// Hide the dropdown when clicking outside of it
+document.addEventListener('click', function (e) {
+  const dropdown = document.getElementById('settings-dropdown');
+  if (dropdown.style.display === 'block') {
+    dropdown.style.display = 'none';
+  }
+});
+
+// Example functions linked to the settings options
+function openPopup0() {
+  openPopup(0, '64px', '128px');
+}
+
+function openPopup1() {
+  openPopup(1, '24px', '64px');
+}
+
+function toggleDock() {
+  const dock = document.getElementById('dock');
+  dock.classList.toggle('hidden');
+}
+
+function changeTheme() {
+  document.body.classList.toggle('light-mode');
+}
+
+
+
+
+/* tooltip zichtbaar na klik */
+
+// Handle click events on header icons to toggle tooltip visibility
+document.querySelectorAll('.header-tooltip-container').forEach(container => {
+  const icon = container.querySelector('i');
+  icon.addEventListener('click', function (e) {
+    e.stopPropagation(); // Prevents click event from closing the tooltip immediately
+    container.classList.toggle('active');
+
+    // Close other tooltips when one is clicked
+    document.querySelectorAll('.header-tooltip-container').forEach(otherContainer => {
+      if (otherContainer !== container) {
+        otherContainer.classList.remove('active');
+      }
+    });
+  });
+});
+
+// Hide the tooltips when clicking outside of the icons
+document.addEventListener('click', function () {
+  document.querySelectorAll('.header-tooltip-container').forEach(container => {
+    container.classList.remove('active');
+  });
+});

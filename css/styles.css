@@ -1,24 +1,44 @@
 :root {
   --Cream: #d9d9d9;
-  --Black2: #131313;
-  --Black1: #252525;
+  --Black2: rgba(0, 0, 0, 0.3);
+  --Black1: rgba(0, 0, 0, 0.3);
+  --BackgroundColor: rgba(0, 0, 0, 0.3);
+  --TextColor: #d9d9d9;
 }
 
+body.light-mode {
+  --Cream: #131313;
+  --Black2: rgba(255, 255, 255, 0.3);
+  --Black1: rgba(255, 255, 255, 0.3);
+  --BackgroundColor: rgba(255, 255, 255, 0.3); 
+  --TextColor: #131313;
+}
+
+/* Apply the colors based on the variables */
+body {
+  background-color: var(--BackgroundColor);
+  color: var(--TextColor);
+}
+
+/* Rest of your styles here... */
 
 * {
   padding: 0em; 
   margin: 0em;
   box-sizing: border-box;
-  font-family: sofia pro;
+  
   color: var(--Cream);
 }
-
 
 body {
   width: 100vw;
   height: 100vh;
+
+  font-family: sofia pro;
  
+  background-color: var(--BackgroundColor);
   background-image: url(../images/bg.jpg);
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, .3);
   background-position: center center;
   background-size: cover;
 
@@ -34,7 +54,7 @@ body {
 
 header {
   padding: .5em 1em;
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--BackgroundColor);
   backdrop-filter: blur(32px);
   display: flex;
   justify-content: space-between;
@@ -57,13 +77,17 @@ header {
   cursor: pointer;
 }
 
+
 #clock-container {
   display: flex;
   align-items: center;
   gap: .5em;
+  font-family: "RedditMono-Light";
 }
 
-
+i {
+  font-style: normal;
+}
 
 .header-tooltip-container {
   position: relative;
@@ -93,7 +117,7 @@ header {
 
   text-wrap: nowrap;
 
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--BackgroundColor);
   backdrop-filter: blur(32px);
 }
 
@@ -102,6 +126,95 @@ header {
   opacity: 1;
 }
 
+.header-tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.header-tooltip {
+  visibility: hidden;
+  width: auto;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  top: 100%; /* Position the tooltip below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 1em; /* Adds 1em space between the icon and the tooltip */
+  transition: opacity 0.3s;
+  padding: 0.5em 1em;
+  color: var(--Cream);
+  border-radius: 0.5em;
+  background: var(--BackgroundColor);
+  backdrop-filter: blur(32px);
+  opacity: 0;
+}
+
+.header-tooltip-container:hover .header-tooltip,
+.header-tooltip-container.active .header-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.background-popup {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position it just below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--BackgroundColor);
+  backdrop-filter: blur(32px);
+  border-radius: 8px;
+  padding: 1em;
+  z-index: 1000;
+}
+
+.background-popup img {
+  width: 60px;
+  height: 40px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.background-popup img:hover {
+  border-color: var(--Cream); /* Highlight border on hover */
+}
+
+
+.settings-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--BackgroundColor);
+  backdrop-filter: blur(32px);
+  border-radius: 8px;
+  padding: 1em;
+  margin-top: 1em;
+  z-index: 1000;
+  width: 200px;
+}
+
+.settings-dropdown .setting-option {
+  padding: 0.5em 1em;
+  cursor: pointer;
+  color: var(--Cream);
+  font-size: 0.9em;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.settings-dropdown .setting-option:hover {
+  background-color: var(--BackgroundColor);
+}
+
+.settings-dropdown, .background-popup {
+  margin-top: 3.62em;
+}
 
 
 /*-------------------- MAIN --------------------*/
@@ -121,18 +234,18 @@ main {
   display: none; /* Hidden by default */
   position: fixed;
   z-index: 1;
-  /* left: 50%;
-  top: 50%; */
-  /* transform: translate(-50%, -50%); */
+
+  border-radius: 1rem;
+
   width: 668px;
   height: 500px;
-  
+  backdrop-filter: blur(32px);
 }
 
 .popup-content {
   background-color: var(--Black2);
   padding: 1em;
-  border-radius: 10px;
+  border-radius: inherit;
   width: 100%;
   height: 100%;
   min-height: 92px;
@@ -149,10 +262,11 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1em;
+  padding: .5rem .5rem .5rem 1rem;
   background-color: var(--Black1);
 
   border-radius: .5em;
+  font-size: .5em;
 }
 
 .popup-main {
@@ -337,13 +451,11 @@ footer {
   align-items: center;
   gap: 1em;
 
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--BackgroundColor);
   backdrop-filter: blur(32px);
 
-  border-radius: .5em;
-}
+  border-radius: 1em;
 
-#dock {
   position: fixed;
   bottom: 1em;
   transition: transform 0.5s ease-in-out;
@@ -358,12 +470,16 @@ footer {
 .dock-icons {
   width: 3em;
   height: 3em;
-  background-color: red;
+  background-color: lightgray;
 
-  border-radius: .25em;
+  border-radius: .5em;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, .5);
 
   transition: .3s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dock-icons:hover {
@@ -392,7 +508,7 @@ footer {
 
   text-wrap: nowrap;
 
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--BackgroundColor);
   backdrop-filter: blur(32px);
 
   position: absolute;
@@ -403,16 +519,19 @@ footer {
 }
 
 #icon0 {
-  background-color: grey;
+  /* background-color: grey; */
 }
 
 #icon1 {
-  background-color: green;
+  /* background-color: green; */
 }
 
 #icon2 {
-  background-color: blue;
+  /* background-color: blue; */
 }
+
+
+
 
 
 

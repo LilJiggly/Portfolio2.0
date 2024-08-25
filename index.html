@@ -29,23 +29,53 @@
     <div class="header-left">
       <p>Logo</p>
     </div>
+  
     <div class="header-right">
       <div class="header-tooltip-container">
-        <i class="icon1" id="header-icon1">🔍</i>
+        <i class="icon1" id="header-icon1">👀</i>
         <span class="header-tooltip">Hide / show Dock</span>
       </div>
       <div class="header-tooltip-container">
-        <i class="icon1" id="header-icon1">🔍</i>
-        <span class="header-tooltip">Option</span>
+        <i class="icon1" id="header-icon2">⚙️</i>
+        <span class="header-tooltip">Settings</span>
+  
+        <!-- Settings Dropdown -->
+        <div id="settings-dropdown" class="settings-dropdown">
+          <div class="setting-option" onclick="">
+            🖥️ Open About Me
+          </div>
+          <div class="setting-option" onclick="">
+            💼 Open Project 1
+          </div>
+          <div class="setting-option" onclick="">
+            🛠️ Toggle Dock
+          </div>
+          <div class="setting-option" onclick="">
+            🌗 Toggle Dark/Light Mode
+          </div>
+        </div>
       </div>
       <div class="header-tooltip-container">
-        <i class="icon1" id="header-icon1">🔍</i>
-        <span class="header-tooltip">Lol</span>
+        <i class="icon1" id="header-icon3">🖼️</i>
+        <span class="header-tooltip">Change Background</span>
+        <div id="background-popup" class="background-popup">
+          <img src="./images/bg1.jpg" class="bg-option" data-bg="./images/bg1.jpg" alt="Background 1">
+          <img src="./images/bg2.jpg" class="bg-option" data-bg="./images/bg2.jpg" alt="Background 2">
+          <img src="./images/bg3.jpg" class="bg-option" data-bg="./images/bg3.jpg" alt="Background 3">
+          <img src="./images/bg4.jpg" class="bg-option" data-bg="./images/bg4.jpg" alt="Background 4">
+        </div>
       </div>
+  
+      <div class="header-tooltip-container">
+        <i class="icon1" id="theme-toggle-icon">🌙</i>
+        <span class="header-tooltip">Toggle Dark/Light Mode</span>
+      </div>
+  
       <div id="clock-container">
         <span id="current-date"></span>
         <span id="current-time"></span>
       </div>
+  
     </div>
   </header>
 
@@ -166,7 +196,7 @@
         <div class="tooltip">
           <span class="tooltiptext">About me</span>
         </div>
-
+        
       </div>
 
       <div class="dock-icons" id="icon1">
@@ -174,7 +204,7 @@
         <div class="tooltip">
           <span class="tooltiptext">NieR: Automata</span>
         </div>
-
+🦾
       </div>
 
       <div class="dock-icons" id="icon2">
@@ -182,7 +212,7 @@
         <div class="tooltip">
           <span class="tooltiptext">Project 2</span>
         </div>
-
+🥑
       </div>
 
       <div class="dock-icons" id="icon3">
@@ -190,7 +220,7 @@
         <div class="tooltip">
           <span class="tooltiptext">Not available yet</span>
         </div>
-
+🦴
       </div>
 
       <div class="dock-icons">
@@ -198,10 +228,12 @@
         <div class="tooltip">
           <span class="tooltiptext">Not available yet</span>
         </div>
-
+🎲
       </div>
 
     </div>
+
+    
   </footer>
 
   <script src="js/scripts.js"></script>
